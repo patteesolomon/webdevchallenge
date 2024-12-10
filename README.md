@@ -1,4 +1,4 @@
-* THIS SITE IS LIVE IN THE LINKE BELOW
+* THIS SITE IS LIVE IN THE LINK BELOW
 
 https://webdevchallenge.onrender.com
 
