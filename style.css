@@ -1,0 +1,134 @@
+html {
+  font: 10px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: rgb(25, 18, 68);
+  color: rgb(171, 236, 236); 
+}
+
+canvas{
+  background-color: rgb(46, 134, 74);
+  border: 5px;
+  color-scheme: black rgb(175, 239, 255);
+  border-style: double double dashed dashed;
+}
+
+.roboto-thin {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.roboto-light {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.roboto-medium {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.roboto-bold {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.roboto-black {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.roboto-thin-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.roboto-light-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.roboto-regular-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.roboto-medium-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.roboto-bold-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.roboto-black-italic {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+button {
+  width: 150px;
+  height: 20px;
+}
+
+/* only a mere bit of responsive UI */
+
+@media (min-width:500px) {
+    a.nav-forum {
+      display:inline
+    }
+  }
+
+@media (max-width:500px) {
+    .site-title {
+        font-size:3.2rem
+    }
+    .site-description {
+        font-size:1.8rem
+    }
+}
+
+@media (min-width:1000px) {
+    .site-nav-middle {
+      flex:1 0 20%;
+      margin-right:0
+    }
+    .site-nav-left {
+      display:flex;
+      flex:1 0 35%;
+      margin-left:0
+    }
+    .site-nav-logo {
+      margin-left:auto;
+      margin-right:auto
+    }
+    .site-nav-right {
+      flex:1 0 35%;
+      margin-left:auto
+    }
+}
+
+@media (max-width:1040px) {
+    .post-full-content img,
+    .post-full-content video {
+      width:100%
+    }
+  }
