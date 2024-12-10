@@ -12,3 +12,6 @@
   the center screen.
   You may add multiple lines and you may change
   the line width when desired.
+
+  ** Requirements
+  It only works in CHROME.
