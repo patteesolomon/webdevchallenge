@@ -3,8 +3,9 @@
 https://webdevchallenge.onrender.com
 
   ** Description
-  This was a web development internship assignment I got
-  working on as soon as I saw the challenge online.
+  This was a web development internship assignment I found
+  on the internet from a company called "WindBourne Systems"
+  I started working on as soon as I saw the challenge online.
   This app creates a line in a sequence and the user
   can add as many lines to the canvas dynamically
   with the ability to input x, y coordinates from
