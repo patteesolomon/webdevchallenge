@@ -1,6 +1,6 @@
 * THIS SITE IS LIVE IN THE LINK BELOW
 
-https://webdevchallenge.onrender.com
+ https://webdevchallenge1.netlify.app/
 
   ** Description
   This was a web development internship assignment I found
