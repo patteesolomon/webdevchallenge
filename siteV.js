@@ -19,6 +19,7 @@ const p = document.querySelector("p");
  let program;
  let buffer;
  let initLineBuffer;
+ let origin = 0;
  var vertex_buffer;
  var vertShader;
  var fragShader;
@@ -29,7 +30,7 @@ const p = document.querySelector("p");
  var x = 1;
  var y = 1;
  var zm = 0;
- 
+ let x2, y2;  
  const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;  
 
  /*== == Defining and storing the geometry == ==*/
@@ -37,13 +38,13 @@ const p = document.querySelector("p");
  vertex_buffer = gl.createBuffer();
 
 // initial position 
-  initLineBuffer = [];
+  initLineBuffer = [0,0,0,0,0,0];
 // Vertex shader source code
 var vertCode =
    'attribute vec3 coordinates;' + 
    'attribute vec4 ;'+
    'void main(void) {' +  
-      'gl_Position = vec4(coordinates, 13.0);' +
+      'gl_Position = vec4(coordinates, 15.0);' +
    '}';
 // Fragment shader source code
 var fragCode =
@@ -56,7 +57,7 @@ function log(s) {
 }   
 // functions 
 function glBufferProps(vertex_buffer, shaderProgram) {
-   /*= = Associating shaders to buffer objects = =*/
+   /*= = Associating shaders to buffer objects = =*/ 
 
    // Bind vertex buffer object
    gl.bindBuffer(gl.ARRAY_BUFFER, vertex_buffer);
@@ -95,7 +96,7 @@ function glDraw() {
    gl.viewport(0,0, gl.viewportWidth, gl.viewportHeight);
 
    // Draw the Lines
-   gl.drawArrays(gl.LINE_STRIP, 0, 24); //gl.drawArrays(gl.LINE_STRIP, 0, 10);
+   gl.drawArrays(gl.LINES, 0, 14); //gl.drawArrays(gl.LINE_STRIP, 0, 10);
 
 }
 
@@ -198,12 +199,16 @@ widthSelector.addEventListener("input", function (){
 // ev listeners
 // button call
 drawButton.addEventListener("click", function(){  
-   let x2, y2;  
+   
    lineWidth = vali; 
-   var len = initLineBuffer.length;
-   x2 = initLineBuffer[len-3];
-   y2 = initLineBuffer[len-2]; 
-   var objA = [x2, y2, 0, x, y, 0];
+   var len = initLineBuffer.length;  
+   let i = len - 2;
+   let j = len - 1; 
+   let lasto = origin;
+   origin += lasto;
+   x2 = initLineBuffer[i];
+   y2 = initLineBuffer[j];
+   var objA = [y2, x2, origin, y, x, origin];
    initLineBuffer = initLineBuffer.concat(objA);
    // at the end you have to start or this wont work
    Start();
