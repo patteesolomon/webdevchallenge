@@ -30,7 +30,8 @@ const p = document.querySelector("p");
  var x = 1;
  var y = 1;
  var zm = 0;
- let x2, y2;  
+ let x2 = 0 
+ let y2 = 0;  
  const aspect = gl.canvas.clientWidth / gl.canvas.clientHeight;  
 
  /*== == Defining and storing the geometry == ==*/
@@ -38,12 +39,12 @@ const p = document.querySelector("p");
  vertex_buffer = gl.createBuffer();
 
 // initial position 
-  initLineBuffer = [0,0,0,0,0,0];
+  initLineBuffer = [0, 0, 0, 0];
 // Vertex shader source code
 var vertCode =
    'attribute vec3 coordinates;' + 
    'void main(void) {' +  
-      'gl_Position = vec4(coordinates, 15.0) ;' +
+      'gl_Position = vec4(coordinates, 1.0) ;' +
    '}';
 // Fragment shader source code
 var fragCode =
@@ -72,16 +73,7 @@ function glBufferProps(vertex_buffer, shaderProgram) {
 }
 
 function glDraw() {
-    /*=== = Drawing the lines == ==*/  
-   /**Find out how to make the array strip
-    * from the centered line focus.
-    * Maybe get the thickness aspect added per line.
-    *  maybe lessen the weight of how this
-    * thing is so broad in the first place 
-    * (or just use weaker floats? negation?) << nope dont' work
-    */
-   // Clear the canvas
-
+    /*=== = Drawing the lines == ==*/   
    gl.clearColor(0.0, 0.5, 0.5, 0.9);
 
    gl.lineWidth(lineWidth);
@@ -92,10 +84,9 @@ function glDraw() {
    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
    // Set the view port
-   gl.viewport(0,0, gl.viewportWidth, gl.viewportHeight);
-
+   gl.viewport(-520, 0, gl.viewportWidth, gl.viewportHeight);
    // Draw the Lines
-   gl.drawArrays(gl.LINE_STRIP, 0, 14); 
+   gl.drawArrays(gl.LINES, 0, 24); 
 
 }
 
@@ -158,6 +149,8 @@ function Start(){
 const br = document.createElement("br");
 const xStr = document.createElement("p");
 const yStr = document.createElement("p");
+const xStr2 = document.createElement("p");
+const yStr2 = document.createElement("p");
 const drawButton = document.createElement("button"); 
 const clearButton = document.createElement("button");
 
@@ -180,35 +173,39 @@ xSelector.id = 'xSet';
 const ySelector = document.createElement("input");
 ySelector.id = 'ySet';
 
+const xSelector2 = document.createElement("input");
+xSelector2.id = 'xSet2';
+
+const ySelector2 = document.createElement("input");
+ySelector2.id = 'ySet2';
+
 xStr.textContent= 'x';
+xStr2.textContent= 'x';
 yStr.textContent= 'y'; 
-// lookup event listners
-xSelector.addEventListener("input", function (){
-   x = xSelector.value;  
-   // log(x);
+yStr2.textContent = 'y';
+
+// lookup event listners 
+xSelector2.addEventListener("input", function (){
+   x2 = xSelector2.value; 
 });
-ySelector.addEventListener("input", function (){ 
-   y = ySelector.value;  
+ySelector2.addEventListener("input", function (){ 
+   y2 = ySelector2.value;  
 });
 widthSelector.addEventListener("input", function (){
-   vali = widthSelector.value;  
-   // log(vali);
-});
-
+   vali = widthSelector.value;
+}); 
+ 
 // ev listeners
 // button call
 drawButton.addEventListener("click", function(){  
    
-   lineWidth = vali; 
-   var len = initLineBuffer.length;  
-   let i = len - 2;
-   let j = len - 1; 
+   lineWidth = vali;  
    let lasto = origin;
    origin += lasto;
-   x2 = initLineBuffer[i];
-   y2 = initLineBuffer[j];
-   var objA = [x, y, origin];
+   var objA = [x, y, x2, y2];
    initLineBuffer = initLineBuffer.concat(objA);
+   x = x2;
+   y = y2;
    // at the end you have to start or this wont work
    Start();
 });
@@ -230,11 +227,12 @@ titlePlane.appendChild(drawButton);
 titlePlane.appendChild(clearButton);
 widthFace.appendChild(br);
 widthFace.appendChild(widthSelector); 
-widthFace.appendChild(br);
-widthFace.appendChild(xStr)
-widthFace.appendChild(xSelector);
-widthFace.appendChild(br);
-widthFace.appendChild(yStr);
-widthFace.appendChild(ySelector);
+widthFace.appendChild(br); 
+widthFace.appendChild(xStr2);
+widthFace.appendChild(xSelector2);
+widthFace.appendChild(br); 
+widthFace.appendChild(yStr2);
+widthFace.appendChild(ySelector2);
+
 
 Start();
