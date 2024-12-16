@@ -208,7 +208,7 @@ drawButton.addEventListener("click", function(){
    origin += lasto;
    x2 = initLineBuffer[i];
    y2 = initLineBuffer[j];
-   var objA = [y2, x2, origin, y, x, origin];
+   var objA = [y, x, origin];
    initLineBuffer = initLineBuffer.concat(objA);
    // at the end you have to start or this wont work
    Start();
