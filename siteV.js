@@ -42,9 +42,8 @@ const p = document.querySelector("p");
 // Vertex shader source code
 var vertCode =
    'attribute vec3 coordinates;' + 
-   'attribute vec4 ;'+
    'void main(void) {' +  
-      'gl_Position = vec4(coordinates, 15.0);' +
+      'gl_Position = vec4(coordinates, 15.0) ;' +
    '}';
 // Fragment shader source code
 var fragCode =
@@ -96,7 +95,7 @@ function glDraw() {
    gl.viewport(0,0, gl.viewportWidth, gl.viewportHeight);
 
    // Draw the Lines
-   gl.drawArrays(gl.LINES, 0, 14); //gl.drawArrays(gl.LINE_STRIP, 0, 10);
+   gl.drawArrays(gl.LINE_STRIP, 0, 14); 
 
 }
 
