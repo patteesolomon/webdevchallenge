@@ -44,7 +44,7 @@ const p = document.querySelector("p");
 var vertCode =
    'attribute vec3 coordinates;' + 
    'void main(void) {' +  
-      'gl_Position = vec4(coordinates, 1.0) ;' +
+      'gl_Position = vec4(coordinates, 7.2) ;' +
    '}';
 // Fragment shader source code
 var fragCode =
@@ -84,9 +84,9 @@ function glDraw() {
    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
    // Set the view port
-   gl.viewport(-520, 0, gl.viewportWidth, gl.viewportHeight);
+   gl.viewport(-690, -140, gl.canvas.width + 520, gl.canvas.height);
    // Draw the Lines
-   gl.drawArrays(gl.LINES, 0, 24); 
+   gl.drawArrays(gl.LINES, 0, 120); 
 
 }
 
@@ -153,7 +153,8 @@ const xStr2 = document.createElement("p");
 const yStr2 = document.createElement("p");
 const drawButton = document.createElement("button"); 
 const clearButton = document.createElement("button");
-
+// warning
+const desDecimals = document.createElement("p");
 const widthSelector = document.createElement("input");
 widthSelector.id = 'lineWidthSet'; 
 const widthFace = document.createElement("h4");
@@ -163,7 +164,7 @@ drawButton.id = 'lineGen';
 drawButton.innerHTML = "Generate Line ";
 widthFace.innerHTML = "Line Width"; 
 clearButton.innerHTML = "clear";
-clearButton.id = "clearb";
+clearButton.id = "clearb"; 
 
 // xy input addon
 
@@ -179,6 +180,7 @@ xSelector2.id = 'xSet2';
 const ySelector2 = document.createElement("input");
 ySelector2.id = 'ySet2';
 
+desDecimals.textContent = `Try using '-.##' decimal numbers before using '##.##' decimals or whole numbers. It helps keep it in the canvas.`;
 xStr.textContent= 'x';
 xStr2.textContent= 'x';
 yStr.textContent= 'y'; 
@@ -209,22 +211,12 @@ drawButton.addEventListener("click", function(){
    // at the end you have to start or this wont work
    Start();
 });
-
-clearButton.addEventListener("click", function(){
-   gl.deleteBuffer(vertex_buffer); 
-   let data = [];
-   let vertex_buff3er = gl.createBuffer(); 
-   vertex_buffer = vertex_buff3er;
-   initLineBuffer = data;
-   Start();
-})
  
 // site structure
 root.appendChild(titlePlane);
 titlePlane.appendChild(widthFace)
 titlePlane.appendChild(br); 
-titlePlane.appendChild(drawButton);
-titlePlane.appendChild(clearButton);
+titlePlane.appendChild(drawButton); 
 widthFace.appendChild(br);
 widthFace.appendChild(widthSelector); 
 widthFace.appendChild(br); 
@@ -233,6 +225,5 @@ widthFace.appendChild(xSelector2);
 widthFace.appendChild(br); 
 widthFace.appendChild(yStr2);
 widthFace.appendChild(ySelector2);
-
 
 Start();
